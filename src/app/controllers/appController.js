@@ -5,3 +5,7 @@ exports.getPortfolioPage = (req, res, next) => {
 exports.getEditPage = (req, res, next) => {
     res.render('app/edit');
 };
+
+exports.getEditHeaderPage = (req, res, next) => {
+    res.render('app/edit-header');
+};
