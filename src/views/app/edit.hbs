@@ -219,7 +219,7 @@
     <div class="relative p-4 w-full max-w-lg max-h-full">
         <div class="relative bg-white rounded-lg shadow p-3">
             <div class="text-center text-sm font-bold mt-3 mb-4">Edit details</div>
-            <form action="">
+            <form action="/@{{foundUser.username}}/details?_method=PUT" method="POST">
                 <div>
                     <label for="class" class="font-semibold text-sm mb-1 block">Class</label>
                     <input  

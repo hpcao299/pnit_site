@@ -87,6 +87,22 @@ exports.editUsername = async (req, res, next) => {
         req.flash('success', 'Updated username successfully.');
         res.redirect(`/@${newUsername}/edit`);
     } catch (error) {
-        res.json({ message: error });
+        req.flash('error', 'Something went wrong.');
+        res.redirect('back');
+    }
+};
+
+exports.editDetails = async (req, res, next) => {
+    const data = req.body;
+    const username = req.params.username;
+
+    try {
+        await User.findOneAndUpdate({ username }, data);
+
+        req.flash('success', 'Updated details successfully.');
+        res.redirect('back');
+    } catch (error) {
+        req.flash('error', 'Something went wrong.');
+        res.redirect('back');
     }
 };
