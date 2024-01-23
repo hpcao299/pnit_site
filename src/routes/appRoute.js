@@ -6,4 +6,6 @@ router.get('/@:username', appController.getPortfolioPage);
 router.get('/@:username/edit', appController.getEditPage);
 router.get('/@:username/edit/header', appController.getEditHeaderPage);
 
+router.patch('/@:username/username', appController.editUsername);
+
 module.exports = router;

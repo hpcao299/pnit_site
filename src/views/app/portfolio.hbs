@@ -1,38 +1,43 @@
 <div class="after:fixed after:w-screen after:h-screen after:top-0 after:left-0 after:from-cyan-500 after:to-cyan-100 after:bg-gradient-to-bl after:-z-10 min-h-[calc(100vh-92px)] text-white pb-6">
     <div class="px-8 pt-6">
         <div class="w-full">
-            <a href="/@abc/edit" class="inline-block p-2 pl-0">
+            <a href="/@{{foundUser.username}}/edit" class="inline-block p-2 pl-0">
                 <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
             </a>
         </div>
         
         <header class="text-center flex items-center justify-center flex-col mt-5 mb-6">
-            <img src="/img/example_avatar.jpeg" alt="name" width="80" height="80" class="w-20 h-20 rounded-full shadow-sm">
-            <h1 class="mt-3 text-xl font-semibold uppercase text-white drop-shadow-lg shadow-black">Duy Nhỏ</h1>
-            <p class="mt-2 font-sm font-light">“Wake up & Take your coffee...”</p>
+            {{#if foundUser.image_url}}
+                <img src="{{foundUser.image_url}}" alt="{{foundUser.name}}" width="80" height="80" class="w-20 h-20 rounded-full shadow-sm">
+            {{/if}}
+            {{#unless foundUser.image_url}}
+                <div class="rounded-full bg-gray-300 w-20 h-20 text-5xl flex items-center justify-center">{{firstWordOfName}}</div>
+            {{/unless}}
+            <h1 class="mt-3 text-xl font-semibold uppercase text-white drop-shadow-lg shadow-black">{{foundUser.name}}</h1>
+            <p class="mt-2 font-sm font-light">{{foundUser.bio}}</p>
         </header>
 
         <div class="bg-white rounded-lg px-7 pb-5 text-base text-black relative">
-            <div class="absolute top-0 -left-2.5 h-[60px] w-[1px] bg-black"></div>
-            <div class="absolute bottom-0 -right-2.5 h-[60px] w-[1px] bg-black"></div>
+            <div class="absolute top-0 -left-2.5 h-[60px] w-[1px] bg-white"></div>
+            <div class="absolute bottom-0 -right-2.5 h-[60px] w-[1px] bg-white"></div>
             <div class="text-center font-semibold py-1">Profile</div>
             <hr class="border-t border-solid border-black">
             <div class="py-4 px-5">
                 <div class="flex items-center">
                     <div class="font-bold w-1/3 min-w-[80px]">Name:</div>
-                    <span class="font-medium">Duy Nhỏ</span>
+                    <span class="font-medium">{{foundUser.name}}</span>
                 </div>
                 <div class="flex items-center">
                     <div class="font-bold w-1/3 min-w-[80px]">Class:</div>
-                    <span class="font-medium">11A6</span>
+                    <span class="font-medium">{{foundUser.class}}</span>
                 </div>
                 <div class="flex items-center">
                     <div class="font-bold w-1/3 min-w-[80px]">School:</div>
-                    <span class="font-medium">THPT Phú Nhuận</span>
+                    <span class="font-medium">{{foundUser.school}}</span>
                 </div>
                 <div class="flex items-center">
                     <div class="font-bold w-1/3 min-w-[80px]">Contact:</div>
-                    <span class="font-medium">0901457769</span>
+                    <span class="font-medium">{{foundUser.phone}}</span>
                 </div>
             </div>
             <hr class="border-t border-solid border-black">
@@ -62,36 +67,46 @@
         <div>
             <h2 class="uppercase font-semibold text-xl text-center tracking-wider drop-shadow-lg shadow-black mb-6">SOCIAL MEDIA</h2>
             <div>
-                <a href="">
-                    <div class="mb-4 bg-transparent border-[5px] border-solid border-white rounded-sm px-3 py-4 relative drop-shadow-lg shadow-black">
-                    <img src="/img/facebook_icon.png" alt="Facebook icon" width="32" height="32" class="absolute left-3 top-1/2 -translate-y-1/2">
-                    <div class="text-center text-xl capitalize font-bold w-full">Facebook</div>
-                </div>
-                </a>
-                <a href="">
+                {{#if foundUser.facebook_url}}
+                    <a href="{{foundUser.facebook_url}}">
+                        <div class="mb-4 bg-transparent border-[5px] border-solid border-white rounded-sm px-3 py-4 relative drop-shadow-lg shadow-black">
+                            <img src="/img/facebook_icon.png" alt="Facebook icon" width="32" height="32" class="absolute left-3 top-1/2 -translate-y-1/2">
+                            <div class="text-center text-xl capitalize font-bold w-full">Facebook</div>
+                        </div>
+                    </a>
+                {{/if}}
+                {{#if foundUser.instagram_url}}
+                    <a href="{{foundUser.instagram_url}}">
                     <div class="mb-4 bg-transparent border-[5px] border-solid border-white rounded-sm px-3 py-4 relative drop-shadow-lg shadow-black">
                     <img src="/img/instagram_icon.png" alt="Instagram icon" width="32" height="32" class="absolute left-3 top-1/2 -translate-y-1/2">
                     <div class="text-center text-xl capitalize font-bold w-full">Instagram</div>
                 </div>
                 </a>
-                <a href="">
+                {{/if}}
+                {{#if foundUser.email}}
+                    <a href="mailto:{{foundUser.email}}">
                     <div class="mb-4 bg-transparent border-[5px] border-solid border-white rounded-sm px-3 py-4 relative drop-shadow-lg shadow-black">
                     <img src="/img/gmail_icon.png" alt="Gmail icon" width="32" height="32" class="absolute left-3 top-1/2 -translate-y-1/2">
                     <div class="text-center text-xl capitalize font-bold w-full">Gmail</div>
                 </div>
                 </a>
-                <a href="">
+                {{/if}}
+                {{#if foundUser.github_url}}
+                    <a href="{{foundUser.github_url}}">
                     <div class="mb-4 bg-transparent border-[5px] border-solid border-white rounded-sm px-3 py-4 relative drop-shadow-lg shadow-black">
                     <img src="/img/github_icon.png" alt="Github icon" width="32" height="32" class="absolute left-3 top-1/2 -translate-y-1/2">
                     <div class="text-center text-xl capitalize font-bold w-full">Github</div>
                 </div>
                 </a>
-                <a href="">
+                {{/if}}
+                 {{#if foundUser.discord_url}}
+                <a href="{{foundUser.discord_url}}">
                     <div class="mb-4 bg-transparent border-[5px] border-solid border-white rounded-sm px-3 py-4 relative drop-shadow-lg shadow-black">
                     <img src="/img/discord_icon.png" alt="Discord icon" width="32" height="32" class="absolute left-3 top-1/2 -translate-y-1/2">
                     <div class="text-center text-xl capitalize font-bold w-full">Discord</div>
                 </div>
                 </a>
+                 {{/if}}
             </div>
         </div>
     </div>
