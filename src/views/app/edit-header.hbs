@@ -1,57 +1,89 @@
 <div class='min-h-[calc(100vh-92px)] pb-8 text-black'>
-    <div class='pt-4 px-2'>
-        <img src='/img/logo.png' alt='PNIT logo' width='32' height='32' class='mx-auto mb-6' />
+    <div class='pt-3 pb-3 mb-2 bg-[rgba(217,217,217,0.66)]'>
+        <img src='/img/logo.png' alt='PNIT logo' width='32' height='32' class='mx-auto' />
+    </div>
+    <div class='px-2'>
         <h1 class='font-bold text-lg my-7 text-center'>Header</h1>
         <div class='px-5'>
             <div class='flex items-center'>
-                <img
-                    src='/img/example_avatar.jpeg'
-                    alt='name'
-                    width='96'
-                    height='96'
-                    class='mr-3 rounded-full'
-                />
-                <label for='avatar' class='block w-full'>
+                {{#if foundUser.image_url}}
+                    <img
+                        src='{{foundUser.image_url}}'
+                        alt='{{foundUser.name}}'
+                        width='96'
+                        height='96'
+                        class='mr-3 rounded-full'
+                    />
+                {{/if}}
+                {{#unless foundUser.image_url}}
+                    <div
+                        class='rounded-full bg-gray-300 w-24 h-24 text-5xl flex items-center justify-center mr-3'
+                    >{{firstWordOfName}}</div>
+                {{/unless}}
+                <label for='avatar' class='block flex-1'>
                     <button
                         class='block w-full text-sm text-cyan-600 hover:text-cyan-700 rounded-full py-1 px-3 bg-gray-200 hover:bg-gray-300 font-semibold'
                     >Change avatar picture</button>
                 </label>
                 <input id='avatar' type='file' accept='image/*' hidden class='hidden' />
             </div>
-            <div class='mt-3'>
-                <label for='full_name' class='font-semibold text-sm mb-1 block'>Full name</label>
-                <input
-                    id='full_name'
-                    type='text'
-                    name='full_name'
-                    placeholder='Full name'
-                    class='w-full rounded-md border-gray-200 shadow-sm text-sm px-3 py-2 bg-transparent outline-none focus:ring-2 focus:ring-cyan-300 border border-solid border-[rgb(229,231,235)]'
-                    value='Duy Nhỏ'
-                    required
-                />
-            </div>
-            <div class='mt-3'>
-                <label for='bio' class='font-semibold text-sm mb-1 block'>Bio</label>
-                <textarea
-                    id='bio'
-                    name='bio'
-                    placeholder='Bio'
-                    class='w-full resize-none rounded-md border-gray-200 shadow-sm text-sm px-3 py-2 bg-transparent outline-none focus:ring-2 focus:ring-cyan-300 border border-solid border-[rgb(229,231,235)]'
-                    resize='none'
-                    rows='5'
-                >“Wake up & Take your coffee...”</textarea>
-            </div>
+            <form action='/@{{foundUser.username}}'>
+                <div class='mt-3'>
+                    <label for='full_name' class='font-semibold text-sm mb-1 block'>Full name</label>
+                    <input
+                        id='full_name'
+                        type='text'
+                        name='full_name'
+                        placeholder='Full name'
+                        class='w-full rounded-md border-gray-200 shadow-sm text-sm px-3 py-2 bg-transparent outline-none focus:ring-2 focus:ring-cyan-300 border border-solid border-[rgb(229,231,235)]'
+                        value='{{foundUser.name}}'
+                        oninput='editUsername(this.value)'
+                        required
+                        maxlength='60'
+                    />
+                    <div
+                        id='name_length_display'
+                        class='text-right mt-1 text-xs text-gray-500 hidden'
+                    >0/60</div>
+                </div>
+                <div class='mt-3'>
+                    <label for='bio' class='font-semibold text-sm mb-1 block'>Bio</label>
+                    <textarea
+                        id='bio'
+                        name='bio'
+                        placeholder='Short text under your name'
+                        class='w-full resize-none rounded-md border-gray-200 shadow-sm text-sm px-3 py-2 bg-transparent outline-none focus:ring-2 focus:ring-cyan-300 border border-solid border-[rgb(229,231,235)]'
+                        resize='none'
+                        rows='5'
+                        maxlength='120'
+                        oninput='editBio(this.value)'
+                    >{{foundUser.bio}}</textarea>
+                    <div
+                        id='bio_length_display'
+                        class='text-right mt-1 text-xs text-gray-500 hidden'
+                    >0/120</div>
+                </div>
 
-            <div class='mt-8'>
-                <button
-                    type='submit'
-                    class='block w-full text-base text-white bg-cyan-500 hover:bg-cyan-600 focus:ring-3 focus:ring-cyan-300 font-semibold rounded-lg px-5 py-3 mt-8 mb-3 focus:outline-none'
-                >Update profile</button>
-                <a
-                    href='/@abc/edit'
-                    class='block w-full mt-1 text-base text-center font-semibold'
-                >Cancel</a>
-            </div>
+                <div class='mt-8'>
+                    <button
+                        type='submit'
+                        class='block w-full text-base text-white bg-cyan-500 hover:bg-cyan-600 focus:ring-3 focus:ring-cyan-300 font-semibold rounded-lg px-5 py-3 mt-8 mb-3 focus:outline-none'
+                    >Update profile</button>
+                    <a
+                        href='/@{{foundUser.username}}/edit'
+                        class='block w-full mt-1 text-base text-center font-semibold'
+                    >Cancel</a>
+                </div>
+            </form>
         </div>
     </div>
 </div>
+
+<script>
+    const nameLengthDisplay = document.getElementById('name_length_display'); const bioLengthDisplay
+    = document.getElementById('bio_length_display'); function editBio(value) {
+    bioLengthDisplay.innerText = `${value.length}/120`; if (value.length > 60)
+    {bioLengthDisplay.classList.remove('hidden');} }; function editUsername(value) {
+    nameLengthDisplay.innerText = `${value.length}/60`; if (value.length > 40)
+    {nameLengthDisplay.classList.remove('hidden');} }
+</script>

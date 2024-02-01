@@ -76,6 +76,7 @@
             <div class="p-5 rounded-md bg-slate-200 flex flex-col gap-2">
                 <input type="text" class="bg-gray-100 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed text-slate-600" value="Class: {{foundUser.class}}" disabled>
                 <input type="text" class="bg-gray-100 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed text-slate-600" value="School: {{foundUser.school}}" disabled>
+                <input type="text" class="bg-gray-100 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed text-slate-600" value="Phone: {{foundUser.phone}}" disabled>
             </div>
             <div class="flex justify-center mt-4 text-sm">
                 <button data-modal-target="edit-details-modal" data-modal-toggle="edit-details-modal" class="text-cyan-600 hover:text-cyan-700 rounded-full py-1 px-3 bg-gray-200 hover:bg-gray-300 font-semibold">Edit details</button>
@@ -89,7 +90,7 @@
                         <div class="text-[#979797] mr-2"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div>
                         <div class="flex-1 flex items-center bg-gray-100 border border-gray-300 dark:border-gray-600 rounded-lg">
                             <input type="text" class="text-sm focus:ring-blue-500 focus:border-blue-500 block flex-1 p-2.5 cursor-not-allowed text-slate-600" value="{{foundUser.email}}" disabled>
-                            <a href="" class="inline-block pr-2 py-1 text-sky-500 text-sm">Hide</a>
+                            <a class="inline-block pr-2 py-1 text-sky-500 text-sm">Hide</a>
                         </div>
                     </div>
                 {{/if}}
@@ -98,9 +99,11 @@
                         <div class="text-[#979797] mr-2"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></div>
                         <div class="flex-1 flex items-center bg-gray-100 border border-gray-300 dark:border-gray-600 rounded-lg">
                             <input type="text" class="text-sm focus:ring-blue-500 focus:border-blue-500 block flex-1 p-2.5 cursor-not-allowed text-slate-600" value="{{foundUser.facebook_url}}" disabled>
-                            <a href="" class="inline-block pr-2 py-1 text-red-500">
-                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
-                            </a>
+                            <form class="my-auto" action="/@{{foundUser.username}}/facebook_url/delete?_method=DELETE" method="POST">
+                                <button class="inline-block pr-2 py-1 text-red-500">
+                                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 {{/if}}
@@ -109,9 +112,11 @@
                         <div class="text-[#979797] mr-2"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></div>
                         <div class="flex-1 flex items-center bg-gray-100 border border-gray-300 dark:border-gray-600 rounded-lg">
                             <input type="text" class="text-sm focus:ring-blue-500 focus:border-blue-500 block flex-1 p-2.5 cursor-not-allowed text-slate-600" value="{{foundUser.instagram_url}}" disabled>
-                            <a href="" class="inline-block pr-2 py-1 text-red-500">
-                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
-                            </a>
+                            <form class="my-auto" action="/@{{foundUser.username}}/instagram_url/delete?_method=DELETE" method="POST">
+                                <button class="inline-block pr-2 py-1 text-red-500">
+                                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 {{/if}}
@@ -120,9 +125,11 @@
                         <div class="text-[#979797] mr-2"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></div>
                         <div class="flex-1 flex items-center bg-gray-100 border border-gray-300 dark:border-gray-600 rounded-lg">
                             <input type="text" class="text-sm focus:ring-blue-500 focus:border-blue-500 block flex-1 p-2.5 cursor-not-allowed text-slate-600" value="{{foundUser.github_url}}" disabled>
-                            <a href="" class="inline-block pr-2 py-1 text-red-500">
-                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
-                            </a>
+                            <form class="my-auto" action="/@{{foundUser.username}}/github_url/delete?_method=DELETE" method="POST">
+                                <button class="inline-block pr-2 py-1 text-red-500">
+                                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 {{/if}}
@@ -131,9 +138,11 @@
                         <div class="text-[#979797] mr-2"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M8.52062 13.8456C7.48059 13.8456 6.63159 12.9011 6.63159 11.7444 6.63159 10.5876 7.45936 9.64307 8.52062 9.64307 9.57123 9.64307 10.4308 10.5876 10.4096 11.7444 10.4096 12.9011 9.57123 13.8456 8.52062 13.8456ZM15.4941 13.8456C14.454 13.8456 13.604 12.9011 13.604 11.7444 13.604 10.5876 14.4328 9.64307 15.4941 9.64307 16.5447 9.64307 17.4043 10.5876 17.3831 11.7444 17.3831 12.9011 16.5553 13.8456 15.4941 13.8456ZM10.1253 4.32272 9.81655 3.75977 9.18323 3.86532C7.71915 4.10934 6.32658 4.54652 5.02544 5.1458L4.79651 5.25124 4.65507 5.45985C2.0418 9.31417 1.3258 13.1084 1.68032 16.836L1.71897 17.2423 2.04912 17.4822C3.78851 18.7463 5.47417 19.5186 7.12727 20.0254L7.91657 20.2674 9.03013 17.5504C10.9397 18.0224 13.0592 18.0225 14.969 17.5508L16.0757 20.2681 16.8668 20.0254C18.5173 19.5191 20.2137 18.7469 21.9466 17.4809L22.2726 17.2428 22.3131 16.8412C22.7491 12.521 21.616 8.75749 19.3547 5.45628L19.2128 5.2492 18.9846 5.1448C17.6767 4.5466 16.2852 4.10957 14.8309 3.86549L14.2132 3.76182 13.8987 4.30344C13.8112 4.4542 13.7215 4.6244 13.6364 4.79662 12.5441 4.68445 11.456 4.68421 10.3726 4.79627 10.2882 4.62711 10.2025 4.46356 10.1253 4.32272ZM6.71436 16.61C6.91235 16.724 7.11973 16.8356 7.32557 16.9378L6.8764 18.0338C5.75585 17.6256 4.61837 17.0635 3.4476 16.2555 3.22313 13.1175 3.86092 9.95075 6.01196 6.68602 6.90962 6.29099 7.8535 5.98255 8.83606 5.77271 8.89631 5.89807 8.95235 6.02042 8.99839 6.12892L9.27128 6.77213 9.96259 6.67074C11.3152 6.47235 12.6772 6.47209 14.0523 6.671L14.7424 6.77082 15.0147 6.12892C15.0621 6.01719 15.1167 5.89523 15.1743 5.77298 16.1525 5.98301 17.098 6.29188 18.0029 6.68787 19.8781 9.50833 20.8241 12.6541 20.5486 16.255 19.3837 17.0623 18.2422 17.6246 17.1193 18.0333L16.6735 16.9387C16.8799 16.8362 17.0879 16.7243 17.2865 16.61 17.7763 16.3277 18.3039 15.9757 18.6402 15.6395L17.3606 14.36C17.1969 14.5237 16.837 14.7805 16.3831 15.0421 15.9388 15.2981 15.498 15.5049 15.2164 15.598 13.2126 16.2606 10.7883 16.2606 8.78443 15.598 8.50285 15.5049 8.06205 15.2981 7.61772 15.0421 7.16383 14.7805 6.80392 14.5237 6.64017 14.36L5.36065 15.6395C5.6969 15.9757 6.2245 16.3277 6.71436 16.61Z"></path></svg></div>
                         <div class="flex-1 flex items-center bg-gray-100 border border-gray-300 dark:border-gray-600 rounded-lg">
                             <input type="text" class="text-sm focus:ring-blue-500 focus:border-blue-500 block flex-1 p-2.5 cursor-not-allowed text-slate-600" value="{{foundUser.discord_url}}" disabled>
-                            <a href="" class="inline-block pr-2 py-1 text-red-500">
-                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
-                            </a>
+                            <form class="my-auto" action="/@{{foundUser.username}}/discord_url/delete?_method=DELETE" method="POST">
+                                <button class="inline-block pr-2 py-1 text-red-500">
+                                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 {{/if}}
@@ -152,14 +161,30 @@
         <div class="relative bg-white rounded-lg shadow p-3">
             <div class="text-center text-sm font-bold mt-3 mb-4">Add social link</div>
             <div class="flex flex-col gap-2">
-                <div class="w-full rounded-md bg-slate-200 hover:bg-slate-300 flex items-center py-2 px-3">
-                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                    <span class="ml-2">Instagram</span>
-                </div>
-                <div class="w-full rounded-md bg-slate-200 hover:bg-slate-300 flex items-center py-2 px-3">
-                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                    <span class="ml-2">Instagram</span>
-                </div>
+                {{#unless foundUser.instagram_url}}
+                    <button  onclick="openSocialForm('Add new Instagram link', 'Username', 'instagram_url', 'Username')" data-modal-hide="add-social-modal" data-modal-target="add-social-form-modal" data-modal-toggle="add-social-form-modal" class="block w-full rounded-md bg-slate-200 hover:bg-slate-300 flex items-center py-2 px-3">
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        <span class="ml-2">Instagram</span>
+                    </button>
+                {{/unless}}
+                {{#unless foundUser.facebook_url}}
+                    <button onclick="openSocialForm('Add new Facebook link', 'Url', 'facebook_url', 'https://')" data-modal-hide="add-social-modal" data-modal-target="add-social-form-modal" data-modal-toggle="add-social-form-modal" class="block w-full rounded-md bg-slate-200 hover:bg-slate-300 flex items-center py-2 px-3">
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        <span class="ml-2">Facebook</span>
+                    </button>
+                {{/unless}}
+                {{#unless foundUser.github_url}}
+                    <button onclick="openSocialForm('Add new Github link', 'Username', 'github_url', 'Username')" data-modal-hide="add-social-modal" data-modal-target="add-social-form-modal" data-modal-toggle="add-social-form-modal" class="block w-full rounded-md bg-slate-200 hover:bg-slate-300 flex items-center py-2 px-3">
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        <span class="ml-2">Github</span>
+                    </button>
+                {{/unless}}
+                {{#unless foundUser.discord_url}}
+                    <button onclick="openSocialForm('Add new Discord link', 'Account Tag', 'discord_url', 'UserName#1234')" data-modal-hide="add-social-modal" data-modal-target="add-social-form-modal" data-modal-toggle="add-social-form-modal" class="block w-full rounded-md bg-slate-200 hover:bg-slate-300 flex items-center py-2 px-3">
+                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M8.52062 13.8456C7.48059 13.8456 6.63159 12.9011 6.63159 11.7444 6.63159 10.5876 7.45936 9.64307 8.52062 9.64307 9.57123 9.64307 10.4308 10.5876 10.4096 11.7444 10.4096 12.9011 9.57123 13.8456 8.52062 13.8456ZM15.4941 13.8456C14.454 13.8456 13.604 12.9011 13.604 11.7444 13.604 10.5876 14.4328 9.64307 15.4941 9.64307 16.5447 9.64307 17.4043 10.5876 17.3831 11.7444 17.3831 12.9011 16.5553 13.8456 15.4941 13.8456ZM10.1253 4.32272 9.81655 3.75977 9.18323 3.86532C7.71915 4.10934 6.32658 4.54652 5.02544 5.1458L4.79651 5.25124 4.65507 5.45985C2.0418 9.31417 1.3258 13.1084 1.68032 16.836L1.71897 17.2423 2.04912 17.4822C3.78851 18.7463 5.47417 19.5186 7.12727 20.0254L7.91657 20.2674 9.03013 17.5504C10.9397 18.0224 13.0592 18.0225 14.969 17.5508L16.0757 20.2681 16.8668 20.0254C18.5173 19.5191 20.2137 18.7469 21.9466 17.4809L22.2726 17.2428 22.3131 16.8412C22.7491 12.521 21.616 8.75749 19.3547 5.45628L19.2128 5.2492 18.9846 5.1448C17.6767 4.5466 16.2852 4.10957 14.8309 3.86549L14.2132 3.76182 13.8987 4.30344C13.8112 4.4542 13.7215 4.6244 13.6364 4.79662 12.5441 4.68445 11.456 4.68421 10.3726 4.79627 10.2882 4.62711 10.2025 4.46356 10.1253 4.32272ZM6.71436 16.61C6.91235 16.724 7.11973 16.8356 7.32557 16.9378L6.8764 18.0338C5.75585 17.6256 4.61837 17.0635 3.4476 16.2555 3.22313 13.1175 3.86092 9.95075 6.01196 6.68602 6.90962 6.29099 7.8535 5.98255 8.83606 5.77271 8.89631 5.89807 8.95235 6.02042 8.99839 6.12892L9.27128 6.77213 9.96259 6.67074C11.3152 6.47235 12.6772 6.47209 14.0523 6.671L14.7424 6.77082 15.0147 6.12892C15.0621 6.01719 15.1167 5.89523 15.1743 5.77298 16.1525 5.98301 17.098 6.29188 18.0029 6.68787 19.8781 9.50833 20.8241 12.6541 20.5486 16.255 19.3837 17.0623 18.2422 17.6246 17.1193 18.0333L16.6735 16.9387C16.8799 16.8362 17.0879 16.7243 17.2865 16.61 17.7763 16.3277 18.3039 15.9757 18.6402 15.6395L17.3606 14.36C17.1969 14.5237 16.837 14.7805 16.3831 15.0421 15.9388 15.2981 15.498 15.5049 15.2164 15.598 13.2126 16.2606 10.7883 16.2606 8.78443 15.598 8.50285 15.5049 8.06205 15.2981 7.61772 15.0421 7.16383 14.7805 6.80392 14.5237 6.64017 14.36L5.36065 15.6395C5.6969 15.9757 6.2245 16.3277 6.71436 16.61Z"></path></svg>
+                        <span class="ml-2">Discord</span>
+                    </button>
+                {{/unless}}
             </div>
         </div>
     </div>
@@ -168,9 +193,9 @@
 <div id="add-social-form-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-lg max-h-full">
         <div class="relative bg-white rounded-lg shadow p-3">
-            <div class="text-center text-sm font-bold mt-3 mb-4">Add new Instagram link</div>
-            <form action="">
-                <label for="social-input" class="font-semibold text-sm mb-1 block">Username</label>
+            <div id="title" class="text-center text-sm font-bold mt-3 mb-4">Add new Instagram link</div>
+            <form action="?_method=PATCH" method="POST">
+                <label id="social-label" for="social-input" class="font-semibold text-sm mb-1 block">Username</label>
                 <input  
                     id="social-input"
                     type="text"
@@ -179,7 +204,7 @@
                     class="w-full rounded-md border-gray-200 shadow-sm text-sm px-3 py-2 bg-transparent outline-none focus:ring-2 focus:ring-cyan-300 border border-solid border-[rgb(229,231,235)]"
                     required
                 />
-                <button type="submit" class="block w-full text-white bg-cyan-500 hover:bg-cyan-600 focus:ring-3 focus:ring-cyan-300 font-medium rounded-lg text-sm px-3 py-2 mt-4 focus:outline-none">Save</button>
+                <button type="submit" class="block w-full text-white bg-cyan-500 hover:bg-cyan-600 focus:ring-3 focus:ring-cyan-300 font-medium rounded-lg text-sm px-3 py-2 mt-4 focus:outline-none">Add social link</button>
             </form>
         </div>
     </div>
@@ -244,6 +269,18 @@
                         required
                     />
                 </div>
+                <div class="mt-3">
+                    <label for="phone" class="font-semibold text-sm mb-1 block">Phone</label>
+                    <input  
+                        id="phone"
+                        type="text"
+                        name="phone"
+                        placeholder="Phone"
+                        class="w-full rounded-md border-gray-200 shadow-sm text-sm px-3 py-2 bg-transparent outline-none focus:ring-2 focus:ring-cyan-300 border border-solid border-[rgb(229,231,235)]"
+                        value="{{foundUser.phone}}"
+                        required
+                    />
+                </div>
                 <div class="flex items-center justify-center">
                     <button type="submit" class="text-white bg-cyan-500 hover:bg-cyan-600 focus:ring-3 focus:ring-cyan-300 font-medium rounded-lg text-sm px-3 py-1.5 mt-4 focus:outline-none">Save</button>
                 </div>
@@ -269,5 +306,21 @@
         const usernameDisplay = document.getElementById('username-display');
 
         usernameDisplay.innerText = value;
+    }
+
+    const username = `{{foundUser.username}}`;
+    const socialFormModal = document.getElementById('add-social-form-modal');
+    const formTitle = socialFormModal.querySelector('#title')
+    const formInput = socialFormModal.querySelector('#social-input')
+    const formLabel = socialFormModal.querySelector('#social-label')
+    const formElement = socialFormModal.querySelector('form')
+
+    function openSocialForm(title, label, name, placeholder) {
+        formTitle.innerText = title;
+        formLabel.innerText = label;
+        formInput.setAttribute('name', name);
+        formInput.setAttribute('placeholder', placeholder);
+        formElement.setAttribute('action', `/@${username}/${name}/add?_method=PATCH`);
+
     }
 </script>
