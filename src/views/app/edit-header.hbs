@@ -3,37 +3,103 @@
         <img src='/img/logo.png' alt='PNIT logo' width='32' height='32' class='mx-auto' />
     </div>
     <div class='px-2'>
+        {{#if error}}
+            <div
+                class='flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50'
+                role='alert'
+            >
+                <svg
+                    class='flex-shrink-0 inline w-4 h-4 me-3'
+                    aria-hidden='true'
+                    xmlns='http://www.w3.org/2000/svg'
+                    fill='currentColor'
+                    viewBox='0 0 20 20'
+                >
+                    <path
+                        d='M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z'
+                    />
+                </svg>
+                <span class='sr-only'>Info</span>
+                <div>
+                    {{error}}
+                </div>
+            </div>
+        {{/if}}
+
+        {{#if success}}
+            <div
+                class='flex items-center p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-100'
+                role='alert'
+            >
+                <svg
+                    class='flex-shrink-0 inline w-4 h-4 me-3'
+                    aria-hidden='true'
+                    xmlns='http://www.w3.org/2000/svg'
+                    fill='currentColor'
+                    viewBox='0 0 20 20'
+                >
+                    <path
+                        d='M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z'
+                    />
+                </svg>
+                <span class='sr-only'>Info</span>
+                <div>
+                    {{success}}
+                </div>
+            </div>
+        {{/if}}
+
         <h1 class='font-bold text-lg my-7 text-center'>Header</h1>
         <div class='px-5'>
-            <div class='flex items-center'>
-                {{#if foundUser.image_url}}
-                    <img
-                        src='{{foundUser.image_url}}'
-                        alt='{{foundUser.name}}'
-                        width='96'
-                        height='96'
-                        class='mr-3 rounded-full'
-                    />
-                {{/if}}
-                {{#unless foundUser.image_url}}
+            <form
+                action='/@{{foundUser.username}}/details?_method=PUT'
+                enctype='multipart/form-data'
+                method='POST'
+            >
+                <div class='flex items-center'>
                     <div
-                        class='rounded-full bg-gray-300 w-24 h-24 text-5xl flex items-center justify-center mr-3'
-                    >{{firstWordOfName}}</div>
-                {{/unless}}
-                <label for='avatar' class='block flex-1'>
-                    <button
-                        class='block w-full text-sm text-cyan-600 hover:text-cyan-700 rounded-full py-1 px-3 bg-gray-200 hover:bg-gray-300 font-semibold'
-                    >Change avatar picture</button>
-                </label>
-                <input id='avatar' type='file' accept='image/*' hidden class='hidden' />
-            </div>
-            <form action='/@{{foundUser.username}}'>
-                <div class='mt-3'>
-                    <label for='full_name' class='font-semibold text-sm mb-1 block'>Full name</label>
+                        id='imagePreview'
+                        class='w-24 h-24 mr-3'
+                        onclick="document.querySelector('#avatar').click()"
+                    >
+                        {{#if foundUser.image_url}}
+                            <img
+                                src='{{foundUser.image_url}}'
+                                alt='{{foundUser.name}}'
+                                width='96'
+                                height='96'
+                                class='rounded-full object-cover object-center w-full h-full'
+                            />
+                        {{/if}}
+                        {{#unless foundUser.image_url}}
+                            <div
+                                class='rounded-full bg-gray-300 w-full h-full text-5xl flex items-center justify-center'
+                            >{{firstWordOfName}}</div>
+                        {{/unless}}
+                    </div>
+                    <label class='block flex-1' onclick="document.querySelector('#avatar').click()">
+                        <button
+                            type='button'
+                            class='block w-full text-sm text-cyan-600 hover:text-cyan-700 rounded-full py-1 px-3 bg-gray-200 hover:bg-gray-300 font-semibold'
+                        >Change avatar picture</button>
+                    </label>
                     <input
-                        id='full_name'
+                        id='avatar'
+                        name='image'
+                        type='file'
+                        accept='image/png, image/jpeg'
+                        class='hidden'
+                        hidden
+                        onchange='displayImage()'
+                    />
+                </div>
+
+                <div class='mt-3'>
+                    <label for='name' class='font-semibold text-sm mb-1 block'>Full name</label>
+                    <input
+                        id='name'
                         type='text'
-                        name='full_name'
+                        name='name'
                         placeholder='Full name'
                         class='w-full rounded-md border-gray-200 shadow-sm text-sm px-3 py-2 bg-transparent outline-none focus:ring-2 focus:ring-cyan-300 border border-solid border-[rgb(229,231,235)]'
                         value='{{foundUser.name}}'
@@ -65,25 +131,50 @@
                 </div>
 
                 <div class='mt-8'>
-                    <button
-                        type='submit'
-                        class='block w-full text-base text-white bg-cyan-500 hover:bg-cyan-600 focus:ring-3 focus:ring-cyan-300 font-semibold rounded-lg px-5 py-3 mt-8 mb-3 focus:outline-none'
-                    >Update profile</button>
+                    <div id='submit-btn'>
+                        <button
+                            type='submit'
+                            class='block w-full text-base text-white bg-cyan-500 hover:bg-cyan-600 focus:ring-3 focus:ring-cyan-300 font-semibold rounded-lg px-5 py-3 mt-8 mb-3 focus:outline-none'
+                        >Update profile</button>
+                    </div>
                     <a
                         href='/@{{foundUser.username}}/edit'
                         class='block w-full mt-1 text-base text-center font-semibold'
                     >Cancel</a>
-                </div>
-            </form>
+                </div></form>
         </div>
     </div>
 </div>
 
-<script>
+<script type='text/javascript'>
     const nameLengthDisplay = document.getElementById('name_length_display'); const bioLengthDisplay
     = document.getElementById('bio_length_display'); function editBio(value) {
     bioLengthDisplay.innerText = `${value.length}/120`; if (value.length > 60)
     {bioLengthDisplay.classList.remove('hidden');} }; function editUsername(value) {
     nameLengthDisplay.innerText = `${value.length}/60`; if (value.length > 40)
-    {nameLengthDisplay.classList.remove('hidden');} }
+    {nameLengthDisplay.classList.remove('hidden');} } function displayImage() { const preview =
+    document.getElementById('imagePreview'); const input = document.getElementById('avatar');
+    preview.innerHTML = ''; const files = input.files; if (files && files[0]) { const reader = new
+    FileReader(); reader.onload = function (e) { const image = new Image(); image.src =
+    e.target.result; image.style.width = '100%'; image.style.height = '100%'; image.style.objectFit
+    = 'cover'; image.style.objectPosition = 'center'; image.style.borderRadius = '50%';
+    preview.appendChild(image); }; reader.readAsDataURL(files[0]); } } const detailsForm =
+    document.querySelector('form'); detailsForm.addEventListener('submit', e => {
+    document.getElementById('submit-btn').innerHTML = `<button type='button' disabled
+    class='cursor-wait block w-full h-12 opacity-50 text-base text-white bg-cyan-500
+    hover:bg-cyan-600 focus:ring-3 focus:ring-cyan-300 font-semibold rounded-lg px-5 py-3 mt-8 mb-3
+    focus:outline-none' > <svg aria-hidden='true' role='status' class='inline w-6 h-6 text-white
+    animate-spin' viewBox='0 0 100 101' fill='none' xmlns='http://www.w3.org/2000/svg' > <path
+    d='M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0
+    22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144
+    50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186
+    50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144
+    50.5908Z' fill='#E5E7EB' /> <path d='M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079
+    33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124
+    7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843
+    41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717
+    44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457
+    70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913
+    88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z' fill='currentColor' /> </svg>
+    </button>`; });
 </script>

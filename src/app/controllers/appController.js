@@ -170,13 +170,34 @@ exports.editDetails = async (req, res, next) => {
     const data = req.body;
     const username = req.params.username;
 
+    const file = req.file;
+
+    let updatedData = data;
+
+    if (file) {
+        updatedData.image_url = `${process.env.BASE_STATIC_FILES_URL}/${file.filename}`;
+    }
+
+    console.log(updatedData);
+
     try {
-        await User.findOneAndUpdate({ username }, data);
+        await User.findOneAndUpdate({ username }, updatedData);
 
         req.flash('success', 'Updated details successfully.');
-        res.redirect('back');
+        res.redirect(`/@${username}/edit`);
     } catch (error) {
         req.flash('error', 'Something went wrong.');
-        res.redirect('back');
+        res.redirect(`/@${username}/edit`);
     }
+};
+
+exports.uploadAvatar = async (req, res, next) => {
+    const file = req.file;
+    // Respond with the file details
+    res.send({
+        message: 'Uploaded',
+        id: file.id,
+        name: file.filename,
+        contentType: file.contentType,
+    });
 };

@@ -54,12 +54,14 @@
         </div>
         <hr class="mt-10 mb-6">
         <div class="text-center mb-10">
-            {{#if foundUser.image_url}}
-                <img src="{{foundUser.image_url}}" alt="{{foundUser.name}}" width="64" height="64" class="mx-auto rounded-full">
-            {{/if}}
-            {{#unless foundUser.image_url}}
-                <div class="rounded-full bg-gray-300 w-16 h-16 text-4xl flex items-center justify-center mx-auto">{{firstWordOfName}}</div>
-            {{/unless}}
+            <div class="w-16 h-16 mx-auto">
+                {{#if foundUser.image_url}}
+                    <img src="{{foundUser.image_url}}" alt="{{foundUser.name}}" width="64" height="64" class="mx-auto w-full h-full object-cover object-center rounded-full">
+                {{/if}}
+                {{#unless foundUser.image_url}}
+                    <div class="rounded-full bg-gray-300 w-full h-full text-4xl flex items-center justify-center mx-auto">{{firstWordOfName}}</div>
+                {{/unless}}
+            </div>
             <p class="mt-2 mb-1 text-lg font-semibold">{{foundUser.name}}</p>
             {{#if foundUser.bio}}
                 <p>{{foundUser.bio}}</p>
