@@ -1,5 +1,9 @@
 const User = require('../models/User');
 
+exports.getCurrentUser = async (req, res, next) => {
+    res.redirect(`/@${req.user.username}/edit`);
+};
+
 exports.getPortfolioPage = async (req, res, next) => {
     const username = req.params.username;
 
