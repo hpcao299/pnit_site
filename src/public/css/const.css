@@ -1,0 +1,208 @@
+/* Alumni Sans, 700*/
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@700&display=swap');
+
+/* Roboto, both regular and bold*/
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@700&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@700&family=Noto+Serif&family=Roboto:wght@400;500;700&display=swap');
+
+/* Noto serif, regular */
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@700&family=Noto+Serif&family=Roboto:wght@400;700&display=swap');
+
+
+:root{
+    /* Common font size here, the additional responsive size should be in vw*/
+    --border-radius-light: 10px;
+    --border-radius-heavy: 15px;
+
+    --primary-title: 75px;
+    --secondary-title: 60px;
+
+    --main-title: 32px;
+    --sub-main-title: 26px;
+
+    --text-link: 19px;
+
+    --card-title: 24px;
+    --card-text: 17px;
+
+    --content-text: 19px;
+
+    --cta-text: 15px;
+
+    --quote-text: 25px;
+    
+
+    /*Spacing is here */
+    --not-responsive-margin: 60px;
+    --hero-padding: 30px;
+    --section-divider: 12rem;
+
+
+
+    /*Common color is here*/
+    --black-text: #425466;
+    --white-text: #CDCDCD;
+    --light-accent-bg: #F6F9FC;
+    --main-accent: #13C5FB;
+    --btn-text-cta: #8D28DC86;
+    --btn-text-cta-hover: #8D28DC56;
+    --dark-theme: #01001D;
+
+    --project-card-color-2: #8DA400;
+    --project-card-color-2-1: #8DA400c5;
+    --project-card-color-2-2: #8DA4005c;
+
+
+    --project-card-color-3: #820800;
+    --project-card-color-3-1: #820800c5;
+    --project-card-color-3-2: #8208005c;
+
+    --project-card-color-4: #008836;
+    --project-card-color-4-1: #008836c5;
+    --project-card-color-4-2: #0088365c;
+
+
+    --member-card-decor: #263238;
+}
+
+
+
+.primary-title{
+    font-size: var(--primary-title) !important;
+    font-family: 'Alumni Sans', sans-serif !important;
+    font-weight: 700 !important;
+    color: #000 !important;
+    margin-left: 30px;
+    text-indent: -30px;
+    line-height: normal;
+}
+
+.secondary-title{
+    font-size: var(--secondary-title) !important;
+    font-family: 'Alumni Sans', sans-serif !important;
+    font-weight: 700 !important;
+    color: #000 !important;
+}
+
+.main-title{
+    font-size: var(--main-title) !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: 700 !important;
+    color: #000 !important;
+}
+
+.sub-main-title{
+    font-size: var(--sub-main-title) !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: 700 !important;
+    color: #000 !important;
+}
+
+.card-title{
+    font-size: var(--card-title) !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: 700 !important;
+    color: #000 !important;
+}
+
+.card-text{
+    font-size: var(--card-text) !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: 400 !important;
+    color: var(--black-text) !important;
+}
+
+.hero-padding{
+    padding-left: var(--hero-padding);
+}
+
+.content-white-text{
+    font-size: var(--content-text) !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: 400 !important;
+    color: var(--white-text) !important;
+}
+
+.content-black-text{
+    font-size: var(--content-text) !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: 400 !important;
+    color: var(--black-text) !important;
+}
+
+.cta-text{
+    font-size: var(--cta-text);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: var(--black-text);
+}
+
+.quote-text{
+    font-size: var(--quote-text);
+    font-family: 'Noto-serif';
+    font-weight: 500;
+    color: #000;
+}
+
+.nav-text{
+    font-size: var(--content-text) !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: 500 !important;
+    color: #000 !important;
+    margin-right: 2rem;
+}
+
+.text-link{
+    font-size: var(--text-link) !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: 500 !important;
+    color: var(--main-accent) !important;
+    text-decoration: none;
+}
+
+.text-link:hover{
+    text-decoration: underline;
+}
+
+.text-link i{
+    transition: all 150ms ease;
+
+}
+
+.text-link:hover i{
+    transform: translate(20%) scale(1.1);
+}
+
+.emphasize-text{
+    background: linear-gradient(to right, #0EC5FE,
+                    #00AFC777);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+.member-text-role{
+    font-size: var(--cta-text);
+    text-transform: uppercase;
+    color: var(--black-text);
+    font-family: 'Roboto', sans-serif !important;
+}
+
+button{
+    outline: none !important;
+    border: none !important;
+    background: none !important;
+}
+
+.quote-icon-container{
+    width: fit-content;
+}
+
+.overflow-preventer{
+    overflow: hidden;
+}
+
+*::selection:not(img){
+    background-color: var(--main-accent);
+    color: #fff;
+}
+

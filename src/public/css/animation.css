@@ -1,0 +1,22 @@
+.path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: dash 3s cubic-bezier(.26,1.83,.14,1.34) 1 forwards;
+  }
+  
+  @keyframes dash {
+    0% {
+      stroke-dashoffset: -1500;
+      transform: rotateZ(15deg) scale(0.9);
+    }
+
+
+    60%{
+        transform: scale(1);
+    }
+
+    100% {
+      stroke-dashoffset: 0;
+      transform: rotateZ(0deg);
+    }
+}

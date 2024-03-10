@@ -1,0 +1,188 @@
+@media (max-width: 1200px) and (min-width: 600px) {
+    :root{
+        /* Common font size here, the additional responsive size should be in vw*/
+        --border-radius-light: 10px;
+        --border-radius-heavy: 15px;
+    
+        --primary-title: calc(40px + 3vw) !important;
+        --secondary-title: 60px;
+    
+        --main-title: 32px;
+        --sub-main-title: 26px;
+    
+        --text-link: 19px;
+    
+        --card-title: 24px;
+        --card-text: 17px;
+    
+        --content-text: 19px;
+    
+        --cta-text: 15px;
+    
+        --quote-text: 25px;
+        
+    
+        /*Spacing is here */
+        --not-responsive-margin: calc(20px + 3vw);
+        --section-divider: calc(9rem + 1vw);
+    
+    
+    
+        /*Common color is here*/
+        --black-text: #425466;
+        --white-text: #CDCDCD;
+        --light-accent-bg: #F6F9FC;
+        --main-accent: #13C5FB;
+        --btn-text-cta: #8D28DC86;
+        --dark-theme: #01001D;
+    
+        --project-card-color-2: #8DA400;
+        --project-card-color-2-1: #8DA400c5;
+        --project-card-color-2-2: #8DA4005c;
+    
+    
+        --project-card-color-3: #820800;
+        --project-card-color-3-1: #820800c5;
+        --project-card-color-3-2: #8208005c;
+    
+        --project-card-color-4: #008836;
+        --project-card-color-4-1: #008836c5;
+        --project-card-color-4-2: #0088365c;
+    
+    
+        --member-card-decor: #263238;
+    }
+
+    
+    .col-xs-0, 
+    .col-sm-0,
+    .col-md-0,
+    .col-lg-0 {
+    display: none;
+    flex: 0 0 0;
+    max-width: 0;
+    }
+
+    .inviting-nested-container .text-wrapper{
+        max-width: 80%;
+        width: 80%;
+    }
+    .dark-section{
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
+
+    .non-responsive-img-hero, .non-responsive-img-invite{
+        /* resolution of the bg-hero */
+        min-width: 1728px;
+        height: 354px !important;
+    }
+
+    .non-responsive-img-invite{
+        /* resolution of the bg-invite */
+        height: 480px !important;
+    }
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+    :root{
+        /* Common font size here, the additional responsive size should be in vw*/
+        --border-radius-light: 10px;
+        --border-radius-heavy: 15px;
+    
+        --primary-title: calc(50px) !important;
+        --secondary-title: 60px;
+    
+        --main-title: 32px;
+        --sub-main-title: 26px;
+    
+        --text-link: 19px;
+    
+        --card-title: 24px;
+        --card-text: 17px;
+    
+        --content-text: 19px;
+    
+        --cta-text: 15px;
+    
+        --quote-text: 25px;
+        
+    
+        /*Spacing is here */
+        --not-responsive-margin: calc(20px + 3vw);
+        --section-divider: 8rem;
+    
+    
+    
+        /*Common color is here*/
+        --black-text: #425466;
+        --white-text: #CDCDCD;
+        --light-accent-bg: #F6F9FC;
+        --main-accent: #13C5FB;
+        --btn-text-cta: #8D28DC86;
+        --dark-theme: #01001D;
+    
+        --project-card-color-2: #8DA400;
+        --project-card-color-2-1: #8DA400c5;
+        --project-card-color-2-2: #8DA4005c;
+    
+    
+        --project-card-color-3: #820800;
+        --project-card-color-3-1: #820800c5;
+        --project-card-color-3-2: #8208005c;
+    
+        --project-card-color-4: #008836;
+        --project-card-color-4-1: #008836c5;
+        --project-card-color-4-2: #0088365c;
+    
+    
+        --member-card-decor: #263238;
+    }
+
+    .col-xs-0, 
+    .col-sm-0,
+    .col-md-0,
+    .col-lg-0 {
+    display: none;
+    flex: 0 0 0;
+    max-width: 0;
+    }
+    
+    .hero-padding{
+        padding-left: var(--hero-padding);
+        padding-right: var(--hero-padding);
+    }
+    .dark-section{
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
+
+    .text-group{
+        bottom: -15%;
+    }
+
+    .non-responsive-img-hero, .non-responsive-img-invite{
+        /* resolution of the bg-hero */
+        min-width: 1728px;
+        height: 354px !important;
+    }
+
+    .non-responsive-img-invite{
+        /* resolution of the bg-invite */
+        height: 480px !important;
+    }
+
+    
+    .inviting-nested-container .text-wrapper{
+        max-width: 90%;
+        width: 90%;
+    }
+
+    .dark-section-diagonal, .dark-section-cover, .dark-section-cover-project, .member-cover, .inviting-cover, .footer-cover{
+        position: relative;
+        bottom: 12vh;
+    }
+}

@@ -1,7 +1,7 @@
 const gfs = require('../../db').gfs;
 
 exports.getHomePage = (req, res, next) => {
-    res.render('home');
+    res.render('home', { layout: 'homeLayout.hbs' });
 };
 
 exports.getStaticImage = async (req, res, next) => {
