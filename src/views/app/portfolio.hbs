@@ -29,18 +29,24 @@
                     <div class="font-bold w-1/3 min-w-[80px]">Name:</div>
                     <span class="font-medium">{{foundUser.name}}</span>
                 </div>
-                <div class="flex items-center">
-                    <div class="font-bold w-1/3 min-w-[80px]">Class:</div>
-                    <span class="font-medium">{{foundUser.class}}</span>
-                </div>
-                <div class="flex items-center">
-                    <div class="font-bold w-1/3 min-w-[80px]">School:</div>
-                    <span class="font-medium">{{foundUser.school}}</span>
-                </div>
-                <div class="flex items-center">
-                    <div class="font-bold w-1/3 min-w-[80px]">Contact:</div>
-                    <span class="font-medium">{{foundUser.phone}}</span>
-                </div>
+                {{#if foundUser.class}}
+                    <div class="flex items-center">
+                        <div class="font-bold w-1/3 min-w-[80px]">Class:</div>
+                        <span class="font-medium">{{foundUser.class}}</span>
+                    </div>
+                {{/if}}
+                {{#if foundUser.school}}
+                    <div class="flex items-center">
+                        <div class="font-bold w-1/3 min-w-[80px]">School:</div>
+                        <span class="font-medium">{{foundUser.school}}</span>
+                    </div>
+                {{/if}}
+                {{#if foundUser.phone}}
+                    <div class="flex items-center">
+                        <div class="font-bold w-1/3 min-w-[80px]">Phone:</div>
+                        <span class="font-medium">{{foundUser.phone}}</span>
+                    </div>
+                {{/if}}
             </div>
             <hr class="border-t border-solid border-black">
         </div>

@@ -182,8 +182,6 @@ exports.editDetails = async (req, res, next) => {
         updatedData.image_url = `${process.env.BASE_STATIC_FILES_URL}/${file.filename}`;
     }
 
-    console.log(updatedData);
-
     try {
         await User.findOneAndUpdate({ username }, updatedData);
 
