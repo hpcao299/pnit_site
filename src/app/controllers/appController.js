@@ -24,7 +24,13 @@ exports.getPortfolioPage = async (req, res, next) => {
             firstWordOfName = lastWord.charAt(0);
         }
 
-        res.render('app/portfolio', { foundUser, firstWordOfName });
+        res.render('app/portfolio', {
+            foundUser,
+            firstWordOfName,
+            pageTitle: `Trang cá nhân của ${foundUser.name} | PNIT`,
+            pageDescription: `Trang cá nhân của ${foundUser.name}. Tạo trang cá nhân miễn phí với PNIT.`,
+            pageCanonical: `https://pnit.site/@${username}`,
+        });
     } catch (error) {
         next();
     }
@@ -55,6 +61,9 @@ exports.getEditPage = async (req, res, next) => {
             firstWordOfName,
             success: req.flash('success'),
             error: req.flash('error'),
+            pageTitle: `Trang cá nhân của ${foundUser.name} | PNIT`,
+            pageDescription: `Trang cá nhân của ${foundUser.name}. Tạo trang cá nhân miễn phí với PNIT.`,
+            pageCanonical: `https://pnit.site/@${username}/edit`,
         });
     } catch (error) {
         next();
@@ -86,6 +95,9 @@ exports.getEditHeaderPage = async (req, res, next) => {
             firstWordOfName,
             success: req.flash('success'),
             error: req.flash('error'),
+            pageTitle: `Trang cá nhân của ${foundUser.name} | PNIT`,
+            pageDescription: `Trang cá nhân của ${foundUser.name}. Tạo trang cá nhân miễn phí với PNIT.`,
+            pageCanonical: `https://pnit.site/@${username}/edit/header`,
         });
     } catch (error) {
         next();

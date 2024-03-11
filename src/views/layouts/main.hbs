@@ -1,8 +1,8 @@
+<!DOCTYPE html>
 <html lang='en'>
     <head>
         <meta charset='utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-        <title>PNIT Site</title>
         <link rel='icon' type='image/x-icon' href='/img/favicon.ico' />
         <link rel='preconnect' href='https://fonts.googleapis.com' />
         <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
@@ -14,6 +14,49 @@
         <script>
             tailwind.config = { theme: { extend: { colors: { 'white-light': "#d9d9d9" }, } } }
         </script>
+
+        {{#if pageTitle}}
+            <title>{{pageTitle}}</title>
+            <meta name="title" content="{{pageTitle}}">
+            <meta property="og:title" content="{{pageTitle}}" />
+            <meta property="twitter:title" content="{{pageTitle}}" />
+        {{/if}}
+        {{#unless pageTitle}}
+            <title>PNIT Site</title>
+            <meta name="title" content="PNIT Site">
+            <meta property="og:title" content="PNIT Site" />
+            <meta property="twitter:title" content="PNIT Site" />
+        {{/unless}}
+        
+        {{#if pageDescription}}
+            <meta name="description" content="{{pageDescription}}">
+            <meta property="og:description" content="{{pageDescription}}" />
+            <meta property="twitter:description" content="{{pageDescription}}" />
+        {{/if}}
+        {{#unless pageDescription}}
+            <meta name="description" content="Trang web chính thức của Câu lạc bộ Tin học Trường THPT Phú Nhuận. PNIT cung cấp không gian thân thiện cho việc chia sẻ kiến thức, thảo luận về các kiến thức công nghệ. Hãy đến và tham gia cùng PNIT bạn nhé!.">
+            <meta property="og:description" content="Trang web chính thức của Câu lạc bộ Tin học Trường THPT Phú Nhuận. PNIT cung cấp không gian thân thiện cho việc chia sẻ kiến thức, thảo luận về các kiến thức công nghệ. Hãy đến và tham gia cùng PNIT bạn nhé!." />
+            <meta property="twitter:description" content="Trang web chính thức của Câu lạc bộ Tin học Trường THPT Phú Nhuận. PNIT cung cấp không gian thân thiện cho việc chia sẻ kiến thức, thảo luận về các kiến thức công nghệ. Hãy đến và tham gia cùng PNIT bạn nhé!." />
+        {{/unless}}
+
+        {{#if pageImageUrl}}
+            <meta property="og:image" content="{{pageImageUrl}}" />
+            <meta property="twitter:image" content="{{pageImageUrl}}" />
+        {{/if}}
+        {{#unless pageImageUrl}}
+            <meta property="og:image" content="http://localhost:8000/img/web-banner.jpeg" />
+            <meta property="twitter:image" content="http://localhost:8000/img/web-banner.jpeg" />
+        {{/unless}}
+
+        <link rel="canonical" href="{{pageCanonical}}">
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="{{pageCanonical}}" />
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="{{pageCanonical}}" />
     </head>
     <body>
 
