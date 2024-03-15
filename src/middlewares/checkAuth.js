@@ -14,6 +14,8 @@ const checkAuth = async (req, res, next) => {
         const foundUser = await User.findOne({ username: username }, { password: 0 }).lean().exec();
         let firstWordOfName;
 
+        if (!foundUser) return res.render('not-found');
+
         if (!foundUser.image_url) {
             const words = foundUser.name.split(' ');
 

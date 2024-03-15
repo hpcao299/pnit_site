@@ -55,11 +55,12 @@ passport.use(
                 // console.log('findOne: ', foundUser);
 
                 if (!foundUser) {
-                    const createdUser = await profileJson.create({
+                    const createdUser = await User.create({
                         email: profileJson.email,
                         name: profileJson.name,
-                        avatar_url: profileJson.picture,
+                        image_url: profileJson.picture,
                         username: extractUsername(profileJson.email),
+                        password: 'password',
                     });
 
                     // console.log('create: ', createdUser);

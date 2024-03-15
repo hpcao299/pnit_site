@@ -8,7 +8,10 @@ router.get('/login', checkNoAuth, authController.getLoginPage);
 router.get(
     '/login/google',
     checkNoAuth,
-    passport.authenticate('google', { scope: ['profile', 'email'] }),
+    passport.authenticate('google', {
+        scope: ['profile', 'email'],
+        failureRedirect: '/auth/login',
+    }),
 );
 router.get(
     '/login/google/callback',
@@ -16,6 +19,7 @@ router.get(
     passport.authenticate('google', {
         successRedirect: '/user',
         failureRedirect: '/auth/login',
+        failureFlash: 'Failed to login',
     }),
 );
 

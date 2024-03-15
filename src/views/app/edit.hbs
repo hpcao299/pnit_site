@@ -60,7 +60,7 @@
                     <img src="{{foundUser.image_url}}" alt="{{foundUser.name}}" width="64" height="64" class="mx-auto w-full h-full object-cover object-center rounded-full">
                 {{/if}}
                 {{#unless foundUser.image_url}}
-                    <div class="rounded-full bg-gray-300 w-full h-full text-4xl flex items-center justify-center mx-auto">{{firstWordOfName}}</div>
+                    <div class="uppercase rounded-full bg-gray-300 w-full h-full text-4xl flex items-center justify-center mx-auto">{{firstWordOfName}}</div>
                 {{/unless}}
             </div>
             <p class="mt-2 mb-1 text-lg font-semibold">{{foundUser.name}}</p>
