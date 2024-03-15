@@ -70,7 +70,7 @@ passport.use(
                 }
                 cb(null, { id: foundUser._id });
             } catch (error) {
-                console.error(error);
+                cb('error');
             }
         },
     ),

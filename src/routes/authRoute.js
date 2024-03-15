@@ -13,14 +13,19 @@ router.get(
         failureRedirect: '/auth/login',
     }),
 );
+
+const passportErrorHandler = (err, req, res, next) => {
+    res.redirect('/auth/login?error=authentication_error');
+};
+
 router.get(
     '/login/google/callback',
     checkNoAuth,
     passport.authenticate('google', {
         successRedirect: '/user',
         failureRedirect: '/auth/login',
-        failureFlash: 'Failed to login',
     }),
+    passportErrorHandler,
 );
 
 router.get('/logout', authController.logOut);

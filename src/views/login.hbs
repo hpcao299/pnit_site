@@ -12,7 +12,12 @@
             <h2 class='text-lg font-semibold mt-1.5'>PNIT - CLB Tin Học THPT Phú Nhuận</h2></a>
         <h1 class='hidden'>Đăng nhập | PNIT - Câu lạc bộ I.T</h1>
     </div>
-    <div class='px-8 pt-6 flex-1 flex flex-col items-center justify-center'>
+    <div class='px-8 pt-6 flex-1 flex flex-col items-center justify-center mx-auto'>
+        {{#if error}}
+            <div class='p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-100' role='alert'>
+                Đã có lỗi xảy ra trong quá trình đăng nhập.
+            </div>
+        {{/if}}
         <a href='/auth/login/google'><button
                 id='login-button'
                 type='submit'
