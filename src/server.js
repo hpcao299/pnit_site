@@ -7,8 +7,9 @@ const path = require('path');
 const methodOverride = require('method-override');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const User = require('./app/models/User');
+const cors = require('cors');
 
+const User = require('./app/models/User');
 const route = require('./routes');
 const db = require('./db');
 const extractUsername = require('./utils/extractUsername');
@@ -37,6 +38,7 @@ app.use(
 app.use(passport.authenticate('session'));
 
 app.use(flash());
+app.use(cors());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
