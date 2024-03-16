@@ -17,9 +17,6 @@ const extractUsername = require('./utils/extractUsername');
 const app = express();
 const port = process.env.PORT || 8000;
 
-// Connect to MongoDB
-db.connect();
-
 app.use(
     express.urlencoded({
         extended: true,
@@ -97,9 +94,16 @@ app.engine('.hbs', exphbs.engine({ extname: '.hbs', defaultLayout: 'main' }));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-// Init route
-route(app);
+const startApp = async () => {
+    // Connect to MongoDB
+    await db.connect();
 
-app.listen(port, () => {
-    console.log(`App is listening on port: ${port}`);
-});
+    // Init route
+    route(app);
+
+    app.listen(port, () => {
+        console.log(`App is listening on port: ${port}`);
+    });
+};
+
+startApp();
